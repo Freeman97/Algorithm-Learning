@@ -7,11 +7,9 @@ int main()
 {
     int row, col;
     char buf;
-    int laststar = 0;
     int n = 1;
     char puzzle[10][10];
     int eligible[10][10];
-    bool ifstarted = false;
     bool ifFirst = true;
     memset(puzzle, 0, sizeof(puzzle));
     memset(eligible, 0, sizeof(eligible));
@@ -60,84 +58,36 @@ int main()
         // output
         if(n > 1)
         {
-            printf("\n\n");
+            printf("\n");
         }
         printf("puzzle #%d:\n", n++);
         printf("Across\n");
         // across
-        // for(int i = 0; i < row; i++)
-        // {
-        //     ifstarted = false;
-        //     laststar = 0;
-        //     for(int j = 0; j < col; j++)
-        //     {
-        //         if(puzzle[i][j] != '*')
-        //         {
-        //             if(!ifstarted)
-        //             {
-        //                 printf("  %d.", eligible[i][j]);
-        //                 ifstarted = true;
-        //             }
-        //             printf("%c", puzzle[i][j]);
-        //         }
-        //         else
-        //         {
-        //             ifstarted = false;
-        //             if(j - laststar > 1)
-        //             {
-        //                 printf("\n");
-        //                 laststar = j;
-        //             }
-        //         }
-        //     }
-        //     if(col - laststar > 1)
-        //     {
-        //         ifstarted = false;
-        //         printf("\n");
-        //     }
-        // }
         for(int i = 0; i < row; i++)
         {
             for(int j = 0; j < col; j++)
             {
                 if(eligible[i][j] != 0)
                 {
-                    if(ifFirst)
-                    {
-                        ifFirst = false;
-                    }
-                    else
-                    {
-                        printf("\n");
-                    }
-                    printf("  %d.", eligible[i][j]);
+                    printf("%3d.", eligible[i][j]);
                     while(puzzle[i][j] != '*' && j < col)
                     {
                         printf("%c", puzzle[i][j]);
                         j++;
                     }
+                    printf("\n");
                 }
             }
         }
-        ifFirst = true;
-        printf("\n")
         // down
-        printf("Down:\n");
+        printf("Down\n");
         for(int i = 0; i < row; i++)
         {
             for(int j = 0; j < col; j++)
             {
                 if(eligible[i][j] != 0)
                 {
-                    if(ifFirst)
-                    {
-                        ifFirst = false;
-                    }
-                    else
-                    {
-                        printf("\n");
-                    }
-                    printf("  %d.", eligible[i][j]);
+                    printf("%3d.", eligible[i][j]);
                     int k = i;
                     while(puzzle[k][j] != '*' && k < row)
                     {
@@ -145,10 +95,10 @@ int main()
                         eligible[k][j] = 0;
                         k++;
                     }
+                    printf("\n");
                 }
             }
         }
-        ifFirst = true;
         memset(eligible, 0, sizeof(eligible));
     }
     return 0;
