@@ -27,7 +27,6 @@ int main()
             for(int j = 0; j < 5; j++)
             {
                 buf = (char)getchar();
-                printf("%d\n", buf);
                 if(isprint(buf))
                 {
                     if(buf != 'Z')
@@ -56,15 +55,6 @@ int main()
         {
             break;
         }
-        for(int p = 0; p < 5; p++)
-        {
-            for(int q = 0; q < 6; q++)
-            {
-                printf("%d ", puzzle[p][q]);
-            }
-            printf("\n");
-        }
-        printf("(%d, %d)\n", blankR, blankC);
         // operating
         while(true)
         {
@@ -136,11 +126,14 @@ int main()
         }
         getchar();
         // output
+        if(n > 1)
+        {
+            printf("\n");
+        }
         printf("Puzzle #%d:\n", n++);
         if(err)
         {
             printf("This puzzle has no final configuration.\n");
-            printf("\n");
             continue;
         }
         bool firstFlag = true;
@@ -161,6 +154,6 @@ int main()
             }
             printf("\n");
         }
-        printf("\n");
     }
+    return 0;
 }
