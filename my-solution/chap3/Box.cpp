@@ -1,9 +1,11 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 int main()
 {
     int rect[6][2];
+    memset(rect, 0, sizeof(rect));
     while(cin >> rect[0][0] >> rect[0][1])
     {
         int n = 1;
@@ -46,24 +48,13 @@ int main()
                 break;
             }
         }
-        // testout
-        // cout << endl;
-        // for(int i = 0; i < n; i++)
-        // {
-        //     cout << rect[i][0] << " " << rect[i][1] << endl;
-        // }
-        // cout << endl;
-        // for(int i = 0; i < 6; i++)
-        // {
-        //     cout << count[i] << " ";
-        // }
-        // cout << endl;
         // checkit
         bool possible = false;
         int temp1, temp2;
         if(rect[3][0] != 0)
         {
             cout << "IMPOSSIBLE" << endl;
+            memset(rect, 0, sizeof(rect));
             continue;
         }
         for(int i = 1; i < n; i++)
@@ -86,10 +77,12 @@ int main()
             if(((rect[3 - temp1][0] == rect[0][1]) && (rect[3 - temp1][1] == rect[temp1][temp2])) || ((rect[3 - temp1][0] == rect[temp1][temp2]) && (rect[3 - temp1][1] == rect[0][1])))
             {
                 cout << "POSSIBLE" << endl;
+                memset(rect, 0, sizeof(rect));
                 continue;
             }
         }
         cout << "IMPOSSIBLE" << endl;
+        memset(rect, 0, sizeof(rect));
     }
     return 0;
 }
